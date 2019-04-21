@@ -31,11 +31,11 @@ with io.open('datas3.json', 'a', encoding='utf-8') as f:
 			f.write(s)
 			numberOKS += 1
 		else:
-			print "POZO: LA I ES : " + str(i)
+			print "I: " + str(i)
 			print rgame.status_code
 			print rgame.text
 			if(rgame.status_code == 429):
-				print "GAMEOVER"
+				print "LIMIT SURPASED"
 				exit()
 		print "OKS: " + str(numberOKS)
 		time.sleep(0.85)
