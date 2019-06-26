@@ -33,7 +33,7 @@ sc = spark.sparkContext
 
 """##List of champs"""
 
-with open('allChamps.json') as json_file:  
+with open('championsComplete.json') as json_file:  
     champs = json.load(json_file)
 
 idchampions = {}
@@ -219,11 +219,9 @@ for row in game.select("gameCreation").collect():
   else:
     datesCount['nit'] = datesCount['nit'] + 1
 
-game.count()
-
 """##Get champions with best and worst average of creep/s"""
 
-summonersRiftGames = game = spark.read.json("game.json")
+summonersRiftGames = spark.read.json("game.json")
 summonersRiftGames.show(1)
 
 champsIds = summonersRiftGames.select(explode('participants.championId').alias('ChampionId'))

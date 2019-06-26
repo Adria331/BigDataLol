@@ -90,9 +90,6 @@ games = games.loc[games['gameMode'] == 'CLASSIC']
 #Now that is filtered it's innecessary to maintain the column gamemode
 games = games.drop(['gameMode'], axis=1)
 
-with open('game.json', 'w') as f:
-    f.write(games.to_json(orient='records', lines=True))
-
 """### Once filtered by games"""
 
 print(games['participants'][0])
@@ -120,6 +117,9 @@ for teams in games['teams']:
 for teams in games['teams']:
   for team in teams:
     print(team['firstTower'])
+
+with open('game.json', 'w') as f:
+    f.write(games.to_json(orient='records', lines=True))
 
 """##GET MOST PLAYED CHAMP"""
 
